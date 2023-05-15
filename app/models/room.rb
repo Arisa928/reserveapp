@@ -20,8 +20,18 @@ class Room < ApplicationRecord
   end
  
   def self.search(keyword) 
-    where(["roomname like? OR price like? OR detail like? OR address like?","%#{keyword}%","%#{keyword}%","%#{keyword}%","%#{keyword}%"]) 
+    where(["roomname like? OR detail like?","%#{keyword}%","%#{keyword}%"]) 
   end
+  
+  
+  
+  def self.ransackable_attributes(auth_object = nil)
+  ["address", "created_at", "detail", "id", "image", "image_cache", "price", "roomname", "updated_at", "user_id","reservations", "user"]
+  end 
+
+  def self.ransackable_associations(auth_object = nil)
+  ["reservation", "user"]
+  end 
 
 end
 

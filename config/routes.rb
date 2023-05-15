@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   
-  root to: "home#index"
+  get 'home/index'
   
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations",
     passwords: "users/passwords"
   }
-  
+  get "/" => "home#index"
+  get "/index" => "home#index"
+ 
   resources :users do
     member do
       get 'account'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
     get 'users/:account',controller: 'users', action: 'show'
   end
   
+  resources :home
   
   resources :rooms do
     collection do

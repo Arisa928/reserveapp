@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
+  before_action :set_search, :index
+  
   def top
   end
-  
-  before_action :set_search
 
   def set_search
     @q = Room.ransack(params[:q])

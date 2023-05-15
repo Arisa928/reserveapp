@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   protect_from_forgery
   before_action :authenticate_user!,except: [:index,:show]
+  before_action :set_q, only: [:index,:search]
 
   def index
   end
@@ -27,11 +28,20 @@ class UsersController < ApplicationController
       flash[:notice] = "#{@user.id}の情報を更新しました"
       redirect_to user_path(@user)
     else
-      render "edit"
+      render :edit
     end
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
+  
+  def set_q
+    @q = User.ransack(params[:q])
+  end
+
 
   def user_params
     params.require(:user).permit(:profileimage, :username, :profile)

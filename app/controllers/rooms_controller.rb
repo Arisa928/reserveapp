@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show,:top,:search ]
   helper_method :current_user
   
+
   def index
     @rooms = Room.all
     @q = Room.ransack(params[:q])
@@ -64,6 +65,7 @@ class RoomsController < ApplicationController
       end
     elsif params[:keyword].present?
       @rooms = Room.search(params[:keyword])
+      
       if @rooms.count > 0
         flash.now[:alert] = "#{@rooms.count}件見つかりました"
         render'index'
@@ -78,20 +80,16 @@ class RoomsController < ApplicationController
     end  
   end
 
-  def top
-    @q = Room.ransack(params[:q])
-  end
-
   def allroom
     @rooms = Room.where(user_id: current_user.id).order("created_at DESC")
     render'index'
   end
 
-
   private
   def room_params
     params.require(:room).permit(:user_id, :roomname, :detail, :price, :address, :image, :image_cache)
   end
+
 
 end
 

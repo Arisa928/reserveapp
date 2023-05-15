@@ -30,12 +30,19 @@ gem 'ransack'
 
 #フレームワーク。ドロップダウンメニューのため導入
 gem 'bootstrap', '~> 5.3.0.alpha3'
+gem 'jquery-rails'
 
 #画像アップロード用
 gem 'carrierwave'
 
 #画像のサイズ変更
 gem 'mini_magick'
+
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+
+#デバック用
+gem 'pry-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
