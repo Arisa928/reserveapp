@@ -1,10 +1,10 @@
 <header>
-  <nav class="navbar navbar-expand-sm  navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm  navbar-light" style="background-color: #e3f2fd;">
     <div class="navbar-brand">
       <h2 class= "text-light"><%= link_to "Potepan Share", home_index_path,class:'text-secondary'%></h2>
     </div>
 
-    <ul class="collapse navbar-collapse justify-content-end">
+    <ul class="collapse navbar-collapse justify-content-end dropdown-menu-end">
       <% if user_signed_in? %> 
         <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" 
