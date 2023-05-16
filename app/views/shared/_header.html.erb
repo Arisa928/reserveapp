@@ -1,0 +1,37 @@
+<header>
+  <nav class="navbar navbar-expand-sm  navbar-light" style="background-color: #e3f2fd;">
+    <div class="navbar-brand">
+      <h2 class= "text-light"><%= link_to "Potepan Share", home_index_path,class:'text-secondary'%></h2>
+    </div>
+
+    <ul class="collapse navbar-collapse justify-content-end dropdown-menu-end">
+      <% if user_signed_in? %> 
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" 
+            href="#" 
+            id="navbarDropdown" 
+            role="button" 
+            data-toggle="dropdown" >
+            <%= image_tag current_user.profileimage.url,size:"50x50" %>            
+            <%= current_user.username %>
+          </a>  
+          
+          <div class="dropdown-menu dropdown-menu-end" >
+            <li><%= link_to "施設の新規登録", new_room_path,class: "text-secondary", class:"dropdown-item"%></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "施設一覧",  allroom_rooms_path,class: "text-secondary", class:"dropdown-item"%></li>    
+            <li><%= link_to "アカウント確認", user_path(id:current_user), class:"dropdown-item" %></li>
+            <li><%= link_to "予約情報確認",  reservation_path(id:current_user), class:"dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-secondary", class:"dropdown-item" %></li>
+            </div>
+          </ulv>
+        </div>        
+           
+      <% else %>
+        <%= link_to "ログイン", new_user_session_path, class: "text-light"  %>
+        <%= link_to "新規登録", new_user_registration_path, class: "text-light" %>
+      <% end %>
+    </ul>
+  </nav>
+</header>
