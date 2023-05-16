@@ -13,7 +13,8 @@ class Reservation < ApplicationRecord
     validates :number
   end
   
-  validates :number,numericality: {only_integer: true,greater_than_to: 0}
+  validates :number,numericality: {only_integer: true,greater_than: 0}
+  validates :price,numericality: {only_integer: true,greater_than: 0}
 
   validate :start_end_check
 

@@ -12,7 +12,7 @@ class Room < ApplicationRecord
     validates :address
   end
   
-  validates :price,numericality: {only_integer: true,greater_than_to: 0}
+  validates :price,numericality: {only_integer: true,greater_than: 0}
 
 
   def self.search_area(area)

@@ -35,4 +35,8 @@
       </div>
   </div>
 <% end %>
-<%= link_to "Back", :back,class:"btn btn-outline-dark  mt-3 col-md-9" %>
+
+<%= link_to 'javascript:history.back()' do %>
+      <button>戻る</button>
+<% end %>
+    
